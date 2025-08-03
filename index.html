@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advanced To-Do List with Dashboard & Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="todo-container" id="mainPage" role="main" aria-label="To-Do List Application">
+    <header class="header" role="banner">
+      <div class="logo" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="To-Do Icon">
+          <circle cx="12" cy="12" r="11" fill="#fff" stroke="#000" stroke-width="2"/>
+          <path d="M17 8l-5.2 7-2.8-2.8" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 id="main-title">To-Do List</h1>
+      <button id="dashboardBtn" aria-label="Go to Dashboard" title="Dashboard">Dashboard</button>
+    </header>
+
+    <section class="controls-row" role="region" aria-label="Controls">
+      <div class="lang-section" role="group" aria-labelledby="lang-label">
+        <label id="lang-label" for="lang-select">Language</label>
+        <select id="lang-select" aria-labelledby="lang-label">
+          <option value="en">English</option>
+          <option value="ta">Tamil</option>
+          <option value="hi">Hindi</option>
+        </select>
+      </div>
+      <div class="controls-right" style="display:flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <div class="search-section" role="search" style="flex-shrink:0;">
+          <label for="search-tasks">Search</label>
+          <input id="search-tasks" type="search" aria-label="Search tasks" />
+        </div>
+        <div class="theme-section" role="group" aria-labelledby="theme-label" style="flex-shrink:0;">
+          <label id="theme-label" for="theme-select">Theme</label>
+          <select id="theme-select" aria-labelledby="theme-label">
+            <option value="default">Default</option>
+            <option value="dark">Dark</option>
+            <option value="blue">Blue</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="input-section" aria-label="Add new task">
+      <input id="taskInput" type="text" aria-label="Task description" autocomplete="off" />
+      <input id="deadlineInput" type="datetime-local" aria-label="Task deadline (optional)" />
+      <button id="addButton" aria-label="Add task">Add</button>
+    </section>
+
+    <section id="columns" class="columns-container" aria-live="polite" aria-atomic="true" aria-relevant="additions removals"></section>
+  </div>
+
+  <button id="calendarToggle" aria-label="Toggle calendar" title="Toggle calendar widget">📅</button>
+
+  <div id="calendarPopup" role="dialog" aria-modal="true" aria-label="Calendar Widget" tabindex="-1">
+    <h3 id="calendarHeader"></h3>
+    <table>
+      <thead>
+        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+      </thead>
+      <tbody id="calendarBody"></tbody>
+    </table>
+  </div>
+
+  <div id="dashboardPage" role="main" aria-label="Dashboard">
+    <h2 id="dashboardTitle"></h2>
+    <div id="dashboardStats"></div>
+    <button id="backButton">Back</button>
+  </div>
+
+  <div id="allTasksDonePopup" role="alert" aria-live="polite">
+    <div>
+      <h2>🎉 All Tasks Completed!</h2>
+      <p>Well done! You’ve finished all your tasks.</p>
+      <button id="closeAllDoneBtn">Close</button>
+    </div>
+  </div>
+
+  <div id="confetti"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
